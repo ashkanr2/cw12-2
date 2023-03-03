@@ -1,0 +1,51 @@
+﻿@model List<Product>
+@{
+    ViewData["Title"] = "Privacy Policy";
+}
+@{
+    <form method="post">
+  
+    <div class="row">
+        <select name="brands" asp-items="ViewBag.Brands" required="required">
+            <option select disabled>یک مورد را انتخاب کنید </option>
+            <option value="0"> همه موارد </option>
+        </select>
+    </div>
+    <div class="row">
+        <button class="btn btn-warning" type="submit" asp-controller="Product" asp-action="Index"> دسته بندی </button>
+    </div>
+    </form>
+    <br/>
+    <div>
+        <a class="btn btn-primary mb-2" asp-controller="Product" asp-action="Create">ساخت محصول</a>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped table-hover">
+            <thead class="table-primary">
+            <tr>
+                <td>Id</td>
+                <td>Name</td>
+                <td>Color</td>
+                <td>Model</td>
+                <td>code</td>
+                <td>Brand</td>
+            </tr>
+            </thead>
+            <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <th>@item.Id</th>
+                    <td>@item.Name</td>
+                    <td>@item.Color</td>
+                    <td>@item.Model</td>
+                    <td>@item.Code</td>
+                    <td>@item.Brand</td>
+                   
+                </tr>
+            }
+            </tbody>
+        </table>
+    </div>
+}
